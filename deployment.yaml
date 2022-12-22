@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  replicas: 3
+  template:
+    metadata:
+      name: my-app
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-image
+        image: medhtsami/projectos-image
+        imagePullPolicy: IfNotPresent 
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+          requests:
+            memory: "100Mi"
+        
+
+      
